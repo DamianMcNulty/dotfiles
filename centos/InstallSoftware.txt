@@ -34,7 +34,7 @@ shopt -s histappend
 export PROMPT_COMMAND='history -a'
 sudo yum install git
 git config --global user.name "Damian McNulty"
-git config --global user.email damianmcnulty@me.com
+git config --global user.email 
 git config --global color.ui true
 git clone https://github.com/DamianMcNulty/dotfiles.git
 #-------------------------------
