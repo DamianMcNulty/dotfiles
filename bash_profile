@@ -90,9 +90,7 @@ if [ -f $HOME/dotfiles_local/bash_profile ]; then
 fi
 
 #Set starting directory.
-#------------------
-#the homes directory is the starting directory
-#cd ~/Projects
+cd ~/Projects
 
 #Set up fasd.
 eval "$(fasd --init auto)"
