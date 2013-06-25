@@ -1,0 +1,52 @@
+network connection
+yum update
+rmp -Uvh jdk
+chkconfig --list
+scrapbook for firefox
+about:plugins
+visudo	user    ALL=(ALL)       ALL
+cd /usr/java
+find . | grep libnpjp
+cd /usr/lib/mozilla/plugins
+sudo ln -fs /usr/java/jdk1.7.0_25/jre/lib/i386/libnpjp2.so
+finger print login
+flash
+sudo rpm -ivh
+http://linuxdownload.adobe.com/adobe-release/adobe-release-i386-1.0-1.noarch.rpm
+sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
+sudo yum install flash-plugin nspluginwrapper alsa-plugins-pulseaudio libcurl
+sudo rpm -ivh http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+sudo yum --enablerepo epel install ntfs-3g
+sudo yum --enablerepo epel install ntfsprogs ntfsprogs-gnomevfs
+udo rpm -Uvh
+http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.i686.rpm
+sudo vi /etc/yum.repos.d/rpmforge.repo and disable
+sudo yum -y --enablerepo=rpmforge install smplayer compat-libstdc++-33
+libdvdcss libdvdread libdvdplay libdvdnav lsdvd libquicktime flash-plugin
+mplayer mplayer-gui gstreamer-ffmpeg gstreamer-plugins-good
+gstreamer-plugins-bad gstreamer-plugins-ugl
+~/.bash_profile
+#-------------------
+export HISTFILESIZE=10000
+export HISTSIZE=10000
+#-----------------------
+shopt -s histappend
+export PROMPT_COMMAND='history -a'
+sudo yum install git
+git config --global user.name "Damian McNulty"
+git config --global user.email 
+git config --global color.ui true
+git clone https://github.com/DamianMcNulty/dotfiles.git
+#-------------------------------
+if [ -f ~/dotfiles/bash_profile ]; then
+      . ~/dotfiles/bash_profile
+  fi
+#----------------------------
+if [ -f ~/dotfiles/bashrc ]; then
+      . ~/dotfiles/bashrc
+  fi
+#-----------------------------
+md5sum -c md5sum.txt
+download eclipse
+sha1sum -c sha1sum.txt
+make modifications to the dotfiles folder using git repositories and eclipse
