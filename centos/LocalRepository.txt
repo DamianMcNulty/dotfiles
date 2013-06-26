@@ -1,0 +1,88 @@
+#CentOS Update Server and Local Repository
+
+#For private update repositories on the local network. 
+#Can also add custom RPM software packages.
+#Get a full copy of the release version of the OS.
+#Find a mirror that has the DVD image of CentOS.
+
+# mkdir -p /repo/CentOS/5.2/iso
+# cd /repo/CentOS/5.2/iso
+# wget -c http://ftp.usf.edu/pub/centos/5.2/isos/x86_64/CentOS-5.2-x86_64-bin-DVD.iso
+# mkdir -p /repo/CentOS/5.2/os
+# mount -o loop /repo/CentOS/5.2/iso/x86_64/CentOS-5.2-x86_64-bin-DVD.iso /mnt
+# rsync -avP /mnt/CentOS /repo/CentOS/5.2/os/
+# umount /mnt
+
+# mkdir -p /repo/CentOS/5.2/updates
+# rsync -iqrtCO --exclude="*debuginfo*" --exclude="debug/" rsync://mirror.cogentco.com/CentOS/5.2/updates/x86_64 /repo/CentOS/5.2/updates/
+
+Now that you have a local copy of the install media and all the latest RPMs, they should be shared out via http. For http access to the repo, install apache httpd and edit /etc/httpd/conf/httpd.conf, replacing instances of "/var/www/html" with "/repo". Make sure to update the "DocumentRoot" and "Directory" entries.
+# yum -y install httpd
+# vim /etc/httpd/conf/httpd.conf
+# chkconfig httpd on ; service httpd start
+
+We will also have to allow access through the repo server firewall for the local network. Edit /etc/sysconfig/iptables and add in the bellow line before the final DROP statement, substituting in your own subnet.
+
+-A RH-Firewall-1-INPUT -s 192.168.1.0/255.255.255.0 -p tcp --dport 80 -j ACCEPT
+
+and reload iptables:
+# service iptables restart
+
+On the systems where we wish to receive updates, we will need to create a .repo file, so our new repositories are used. Substitute in the IP of your own repo server. You may also have to disable the default repo file placed in by the installer, CentOS-Base.repo.
+# cat /dev/null > /etc/yum.repos.d/CentOS-Base.repo
+# vim /etc/yum.repos.d/internal.repo
+
+# CentOS base from installation media
+[base]
+name=CentOS-$releasever - Base
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os
+#baseurl=http://mirror.centos.org/centos/$releasever/os/$basearch/
+baseurl=http://192.168.1.100/CentOS/$releasever/os/$basearch/
+gpgcheck=1
+gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-5
+protect=1
+
+# CentOS updates via rsync mirror
+# rsync://mirror.cogentco.com/CentOS/5/updates/i386
+# rsync://mirror.cogentco.com/CentOS/5/updates/x86_64
+[update]
+name=CentOS-$releasever - Updates
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates
+#baseurl=http://mirror.centos.org/centos/$releasever/updates/$basearch/
+baseurl=http://192.168.1.100/CentOS/$releasever/updates/$basearch/
+gpgcheck=1
+gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-5
+protect=1
+
+# localy built and misc collected RPMs
+[local]
+name=CentOS-$releasever - Local
+baseurl=http://192.168.1.100/local/el$releasever/$basearch
+enabled=1
+gpgcheck=0
+protect=0
+
+I prefer to use yum via cron and on boot. Enable this with the following:
+# yum -y install yum-protectbase yum-updateonboot yum-cron
+# chkconfig yum-updatesd off ; service yum-updatesd stop
+# chkconfig yum-updateonboot on
+# chkconfig yum-cron on
+
+Notice that there is a "local" repository in the repo config above. This is a directory to hold our own custom RPMs. Any RPMs placed here can be installed via yum on other systems. Once new RPMs are place in, run createrepo to generate the metadata required by yum.
+# mkdir -p /repo/local/el5/x86_64
+# mv *.rpm /repo/local/el5/x86_64/
+# createrepo -v --update /repo/local/el5/x86_64
+
+Once there is a working repo server, updates to the repo dirs can be automated
+# touch /etc/cron.daily/update_repo
+# chmod +x /etc/cron.daily/update_repo
+# vim /etc/cron.daily/update_repo
+
+# CentOS updates
+echo "####### rsync://mirror.cogentco.com/CentOS/5.2/updates/x86_64"
+/usr/bin/rsync -iqrtCO --exclude="*debuginfo*" --exclude="debug/" rsync://mirror.cogentco.com/CentOS/5.2/updates/x86_64 /repo/CentOS/5.2/updates/
+
+Now the repo will rsync daily with the latest updates. Then your other systems will do a yum-cron and install the updates.
+
+Posted 8th September 2008 by Gavin Burris
+http://idolinux.blogspot.ie/2008/09/centos-update-server-and-local.html
