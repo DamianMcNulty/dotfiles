@@ -1,14 +1,17 @@
 network connection
 yum update
-rmp -Uvh jdk
+rmp -Uvh jdk...
 chkconfig --list
 scrapbook for firefox
-about:plugins
 visudo	user    ALL=(ALL)       ALL
+
+
+about:plugins
 cd /usr/java
 find . | grep libnpjp
 cd /usr/lib/mozilla/plugins
 sudo ln -fs /usr/java/jdk1.7.0_25/jre/lib/i386/libnpjp2.so
+
 finger print login
 flash
 sudo rpm -ivh
@@ -18,25 +21,20 @@ sudo yum install flash-plugin nspluginwrapper alsa-plugins-pulseaudio libcurl
 sudo rpm -ivh http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 sudo yum --enablerepo epel install ntfs-3g
 sudo yum --enablerepo epel install ntfsprogs ntfsprogs-gnomevfs
-udo rpm -Uvh
+sudo rpm -Uvh
 http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.i686.rpm
 sudo vi /etc/yum.repos.d/rpmforge.repo and disable
 sudo yum -y --enablerepo=rpmforge install smplayer compat-libstdc++-33
 libdvdcss libdvdread libdvdplay libdvdnav lsdvd libquicktime flash-plugin
 mplayer mplayer-gui gstreamer-ffmpeg gstreamer-plugins-good
 gstreamer-plugins-bad gstreamer-plugins-ugl
-~/.bash_profile
-#-------------------
-export HISTFILESIZE=10000
-export HISTSIZE=10000
-#-----------------------
-shopt -s histappend
-export PROMPT_COMMAND='history -a'
+
 sudo yum install git
 git config --global user.name "Damian McNulty"
 git config --global user.email 
 git config --global color.ui true
 git clone https://github.com/DamianMcNulty/dotfiles.git
+
 #-------------------------------
 if [ -f ~/dotfiles/bash_profile ]; then
       . ~/dotfiles/bash_profile
@@ -46,88 +44,44 @@ if [ -f ~/dotfiles/bashrc ]; then
       . ~/dotfiles/bashrc
   fi
 #-----------------------------
+
 md5sum -c md5sum.txt
 download eclipse
 sha1sum -c sha1sum.txt
 make modifications to the dotfiles folder using git repositories and eclipse
+
+-----------------------------------------------------------------------------------------------------------------------
 sudo yum update
-sudo yum install ruby
-sudo yum install gcc g++ make automake autoconf curl-devel openssl-devel zlib-devel httpd-devel apr-devel apr-util-devel sqlite-devel
+
 sudo yum install ruby-rdoc ruby-devel
 sudo yum install rubygems
 sudo gem update
 
 sudo gem install rails -V
+
 #https://www.digitalocean.com/community/articles/how-to-install-ruby-on-rails-on-centos-6
-
 #https://www.digitalocean.com/community/articles/how-to-install-ruby-on-rails-on-centos-6-with-rvm
-sudo yum install curl
-curl -L get.rvm.io | bash -s stable
-# RVM:  Shell scripts enabling management of multiple ruby environments.
-# RTFM: https://rvm.io/
-# HELP: http://webchat.freenode.net/?channels=rvm (#rvm on irc.freenode.net)
-# Cheatsheet: http://cheat.errtheblog.com/s/rvm
-# Screencast: http://screencasts.org/episodes/how-to-use-rvm
 
-# In case of any issues run 'rvm requirements' or read 'rvm notes'
-
-Installation of RVM in /home/user/.rvm/ is almost complete:
-
-  * To start using RVM you need to run `source /home/user/.rvm/scripts/rvm`
-    in all your open shell windows, in rare cases you need to reopen all shell windows.
-
-source ~/.rvm/scripts/rvm
-rvm requirements
-rvm install 1.9.3
-rvm rubygems current
-gem install rails
 
 sudo yum groupinstall 'Development Tools'
-sudo yum install -y httpd-devel openssl-devel zlib-devel gcc gcc-c++ curl-devel expat-devel gettext-devel patch readline readline-devel zlib zlib-devel libyaml-devel libffi-devel make bzip2 zlib1g mysql-server
-#compiling libyaml
-wget http://pyyaml.org/download/libyaml/yaml-0.1.4.tar.gz
- tar xzvf yaml-0.1.4.tar.gz
- cd yaml-0.1.4
-  ./configure --prefix=/usr/local
-  make
-  sudo make install
-  #compiling ruby 1.9.3
-  wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p194.tar.gz
-  tar xvzf ruby-1.9.3-p194.tar.gz
-  cd ruby-1.9.3-p194
-  ./configure
-  make
-  sudo make install
-  #rubygems
-wget http://rubyforge.org/frs/download.php/76073/rubygems-1.8.24.tgz
-tar xvzf rubygems-1.8.24.tgz
-cd rubygems-1.8.24
-sudo /usr/local/bin/ruby setup.rb
-sudo gem install rails -V
-http://techblogthing.blogspot.ie/2012/11/complete-guide-to-install-ruby-193-on.html
-
-gem install bundler
-rake db:migrate
-rvm install jruby
-
-__________________________
-
+---------------------------------------------------------------------------------------------------------------------------
+centos rpm for ruby
 
 sudo yum install rpm-build redhat-rpm-config rpmdevtools mock
- sudo yum --enablerepo epel install mock
+sudo yum --enablerepo epel install mock
+
 sudo adduser builder --home-dir /home/builder --create-home --user-group --groups mock --shell /bin/bash --comment "rpm package builder"
 su -l builder
+
 rpmdev-setuptree
+
 mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 echo '%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros
+
 cd ~/rpmbuild/SOURCES
-wget ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p374.tar.gz
 wget http://www.mirrorservice.org/sites/ftp.ruby-lang.org/pub/ruby/ruby-1.9.3-p429.tar.gz
-The main thing to change is the version and patch level to match those in the source file archives downloaded into SOURCES. This file we name ruby193.spec and place it in ~/rpmbuild/SPECS
+
 cd ~
-# Initialize the build tree (/var/lib/mock is default)
-# Make sure you have enough disk space available.
-# This is why your build user must belong to the mock group.
 mock --init
 cd ~/rpmbuild/SPECS
 wget https://raw.github.com/imeyer/ruby-1.9.3-rpm/master/ruby19.spec
