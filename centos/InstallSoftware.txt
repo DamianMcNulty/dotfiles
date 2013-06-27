@@ -90,3 +90,9 @@ wget https://raw.github.com/imeyer/ruby-1.9.3-rpm/master/ruby19.spec
 mock --buildsrpm --spec=./rpmbuild/SPECS/ruby193.spec --sources=./rpmbuild/SOURCES
 # Build the binary packages
 mock --no-clean --rebuild /var/lib/mock/epel-6-i386/result/ruby-1.9.3p429-1.el6.src.rpm
+
+-----------------------------------------------------------------------------------
+
+gitscm-next
+
+bundle install
