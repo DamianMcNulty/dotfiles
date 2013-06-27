@@ -1,3 +1,4 @@
+From a live usb Centos, installed to hard drive
 network connection
 yum update
 rmp -Uvh jdk...
