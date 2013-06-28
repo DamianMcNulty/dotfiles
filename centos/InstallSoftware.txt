@@ -150,7 +150,7 @@ mock --buildsrpm --spec=./rpmbuild/SPECS/ruby193.spec --sources=./rpmbuild/SOURC
 # Build the binary packages
 mock --no-clean --rebuild /var/lib/mock/epel-6-i386/result/ruby-1.9.3p429-1.el6.src.rpm
 
------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
 #gitscm-next
 #install ruby and rails
 #test installation of gitscm-next
@@ -164,3 +164,11 @@ bundle install
 vrapper - http://vrapper.sourceforge.net/update-site/stable
 
 -----------------------------------------------------------------------------------
+#http://javaworkshop.wordpress.com/2008/10/22/rolling-up-an-rpm-for-a-java-application/
+#to build a rpm for a java application for Centos
+
+--------------------------------------------------------------------------------------
+#download the source rpm for Task Coach
+#http://taskcoach.org/
+ImportError: No module named wx
+wxWidgets Library
