@@ -28,6 +28,7 @@ export LESS='-i-P%f (%i/%m) Line %lt/%L' #Better prompt, case-insensitive search
 
 export ENV=$HOME/.bashrc
 
+
 #Set up command history.
 export HISTSIZE=100000
 export HISTFILESIZE=100000
