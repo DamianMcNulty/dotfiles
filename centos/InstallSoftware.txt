@@ -172,3 +172,10 @@ vrapper - http://vrapper.sourceforge.net/update-site/stable
 #http://taskcoach.org/
 ImportError: No module named wx
 wxWidgets Library
+--------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------
+#to use Ray's ruby script
+
+ sudo yum --enablerepo epel install xclip
+ ----------------------------------------------------------------------------------
