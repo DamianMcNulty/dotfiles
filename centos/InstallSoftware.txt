@@ -1,4 +1,8 @@
-From a live usb Centos, install to hard drive
+-------------------------------------------------------------------------------
+How to make a Centos6 live usb
+-------------------------------------------------------------------------------
+
+From a live usb Centos6, install to hard drive
 
 -------------------------------------------------------------------------------
 network connection
@@ -177,6 +181,8 @@ vrapper - http://vrapper.sourceforge.net/update-site/stable
 #http://taskcoach.org/
 ImportError: No module named wx
 wxWidgets Library
+http://warped.org/blog/2010/04/02/ch0wned-installing-taskcoach-and-all-its-depenencies-in-home-for-el4/
+
 --------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------------
@@ -184,3 +190,12 @@ wxWidgets Library
 
  sudo yum --enablerepo epel install xclip
  ----------------------------------------------------------------------------------
+ calibre
+ sudo python -c "import sys; py3 = sys.version_info[0] > 2; u = __import__('urllib.request' if py3 else 'urllib', fromlist=1); exec(u.urlopen('http://status.calibre-ebook.com/linux_installer').read()); main(install_dir='/opt')"
+ 
+ ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# turn off bluetooth
+ sudo /sbin/chkconfig bluetooth --level 345 off
+ -------------------------------------------------------------------
+ 
+ 
