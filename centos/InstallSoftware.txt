@@ -197,5 +197,10 @@ http://warped.org/blog/2010/04/02/ch0wned-installing-taskcoach-and-all-its-depen
 # turn off bluetooth
  sudo /sbin/chkconfig bluetooth --level 345 off
  -------------------------------------------------------------------
- 
+ install netbeans
+ jvi for vim funtionality
+ uml for uml diagrams
+ -------------------------------------------------------------
+ file-roller
+ archive manager
  
