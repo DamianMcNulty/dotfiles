@@ -225,6 +225,8 @@ http://warped.org/blog/2010/04/02/ch0wned-installing-taskcoach-and-all-its-depen
  http://randomthoughtsonjavaprogramming.blogspot.ie/2012/02/plantuml-and-netbeans.html
  
  ---------------------------------------------------------------------------------------
+Tools Plugins Settings Add http://dlc.sun.com.edgesuite.net/netbeans/updates/6.9/uc/m1/dev/catalog.xml
+-------------------------------------------------------------------------------------------------------
 
 
  
