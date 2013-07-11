@@ -201,6 +201,18 @@ http://warped.org/blog/2010/04/02/ch0wned-installing-taskcoach-and-all-its-depen
  jvi for vim funtionality
  uml for uml diagrams
  -------------------------------------------------------------
- file-roller
- archive manager
+ file-roller archive-manager
+ 
+ ---------------------------------------------------------------
+ uml for eclipse
+ windowbuilder for eclipse
+ fix java build path for swt for linux 32 in accounting-nua
+ apache openoffice
+ sudo rpm -Uvih *rpm
+ sudo rpm -Uvih openoffice.org3.4-redhat-menus-3.4-9593.noarch.rpm
+ ----------------------------------------------------------------
+ 
+  
+
+
  
