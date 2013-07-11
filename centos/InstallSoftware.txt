@@ -59,7 +59,7 @@ sudo yum --enablerepo epel install ntfs-3g
 sudo yum --enablerepo epel install ntfsprogs ntfsprogs-gnomevfs
 
 --------------------------------------------------------------------------------------
-#pmforge repo
+#rpmforge repo
 
 sudo rpm -Uvh http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.2-2.el6.rf.i686.rpm
 sudo vi /etc/yum.repos.d/rpmforge.repo and disable
@@ -99,6 +99,8 @@ if [ -f ~/dotfiles/bashrc ]; then
       . ~/dotfiles/bashrc
   fi
 #-----------------------------
+
+#added to ~/.profile
 #----------------------------
 if [ -f ~/dotfiles/profile ]; then
       . ~/dotfiles/profile
@@ -206,13 +208,23 @@ http://warped.org/blog/2010/04/02/ch0wned-installing-taskcoach-and-all-its-depen
  ---------------------------------------------------------------
  uml for eclipse
  windowbuilder for eclipse
+ 
+ ------------------------------------------------------------
  fix java build path for swt for linux 32 in accounting-nua
+ ------------------------------------------------------------
  apache openoffice
  sudo rpm -Uvih *rpm
  sudo rpm -Uvih openoffice.org3.4-redhat-menus-3.4-9593.noarch.rpm
  ----------------------------------------------------------------
  latex http://texlipse.sourceforge.net
-  
+ vrapper
+ -----------------------------------------------------------------
+ https://wiki.base22.com/display/btg/Java+source+code+to+UML
+ 
+ -----------------------------------------------------------------
+ http://randomthoughtsonjavaprogramming.blogspot.ie/2012/02/plantuml-and-netbeans.html
+ 
+ ---------------------------------------------------------------------------------------
 
 
  
