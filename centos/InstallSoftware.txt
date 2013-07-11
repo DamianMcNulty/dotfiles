@@ -211,7 +211,7 @@ http://warped.org/blog/2010/04/02/ch0wned-installing-taskcoach-and-all-its-depen
  sudo rpm -Uvih *rpm
  sudo rpm -Uvih openoffice.org3.4-redhat-menus-3.4-9593.noarch.rpm
  ----------------------------------------------------------------
- 
+ latex http://texlipse.sourceforge.net
   
 
 
