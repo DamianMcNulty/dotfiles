@@ -231,11 +231,24 @@ uml diagrams for netbeans
 
 http://imagine.kicbak.com/blog/?p=58
 
+-docletpath "/home/user/Downloads/yworks-uml-doclet-3.0_02-jdk1.5/lib/ydoc.jar" -doclet ydoc.doclets.YStandard -resourcepath "/home/user/Downloads/yworks-uml-doclet-3.0_02-jdk1.5/resources" -umlautogen
+
 -----------------------------------------------------------------------------------------------------
 Accounting software and uml for netbeans
 
 http://orinanobworld.blogspot.ie/2012_11_01_archive.html
 -----------------------------------------------------------------------------------------------------
+#gh-pages for accounting-nua
+
+git clone https://github.com/DamianMcNulty/accounting-nua.git gh-pages
+cd gh-pages/
+git checkout origin/gh-pages -b gh-pages
+git branch -D master
+#add javadoc
+git add -all
+#edit index.html
+git push -u origin gh-pages
+-------------------------------------------------------------------------------------------------------
 
 
  
