@@ -9,3 +9,6 @@ log/*
 spec/fixtures/*
 test/fixtures/*
 tmp/*
+.classpath
+.class
+.project
