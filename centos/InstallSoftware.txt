@@ -250,11 +250,21 @@ git add -all
 git push -u origin gh-pages
 -------------------------------------------------------------------------------------------------------
 delta pack for eclipse
-emf project
+--------------------------------------------------------------------------------------------------
+emf project sdk
+------------------------------------------------------------------------------------------------
 eclipse plugins
 eclipse4
-build rpm
+------------------------------------------------------------------------------
+build rpm for Accounting-nua
 --------------------------------------------------------------------------------------------------------
+download manager Java The Complete Reference 8th edition chapter 34
+create a new project and version control with eclipse
+import into netbeans
+build jar
+add jar file to 8gb microsd
+download centos dvd
+------------------------------------------------------------------------------------------------------
 
 
  

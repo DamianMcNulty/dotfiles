@@ -10,5 +10,5 @@ spec/fixtures/*
 test/fixtures/*
 tmp/*
 .classpath
-.class
+*.class
 .project
