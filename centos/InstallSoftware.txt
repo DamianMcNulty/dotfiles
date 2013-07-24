@@ -266,7 +266,25 @@ import into netbeans
 build jar
 add jar file to 8gb microsd
 download centos dvd
+#modify the code to use long type fields instead of int
 ------------------------------------------------------------------------------------------------------
+#8gb usb stick for installation of virtual machines
 
+sudo yum --enablerepo epel install unetbootin
+#use  CentOS-6.4-i386-netinstall.iso 
+#add CentOS-6.4-i386-bin-DVD1.iso and CentOS-6.4-i386-bin-DVD2.iso to the root of the disk 
 
+ -------------------------------------------------------------------------------------------------
+ #for the yum local repo
+ #combine the two CentOS dvds using the mkdvdiso.sh script
+ #copy the /root/mkrhdvd directory to a 16gb usb stick
+ #wget the centos updates onto this disk
+ #set up the local repo
+ ----------------------------------------------------------------------------------------------
+ #remove temp files at shutdown
+ sudo vim /etc/rc.d/init.d/rsyslog
+ #add to the stop section
+ rm -rf /tmp/.??* /tmp/*
+ -------------------------------------------------------------------------------------------
  
+ -----------------------------------------------------------------------------------------
