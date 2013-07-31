@@ -1,5 +1,7 @@
 -------------------------------------------------------------------------------
-How to make a Centos6 live usb
+#How to make a Centos6 live usb
+sudo yum --enablerepo epel install unetbootin
+#use CentOS-6.4-i386-LiveCD and 4gb usb stick
 -------------------------------------------------------------------------------
 
 From a live usb Centos6, install to hard drive
@@ -286,4 +288,7 @@ sudo yum --enablerepo epel install unetbootin
  #add to the stop section
  rm -rf /tmp/.??* /tmp/*
  -------------------------------------------------------------------------------------------
+ sudo netstat -anltp | grep "LISTEN" 
+ sudo /sbin/chkconfig cups --level 2345 off
+ 
  
