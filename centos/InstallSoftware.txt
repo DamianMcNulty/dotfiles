@@ -266,7 +266,7 @@ download manager Java The Complete Reference 8th edition chapter 34
 create a new project and version control with eclipse
 import into netbeans
 build jar
-add jar file to 8gb microsd
+add jar file to 8gb usb stick
 download centos dvd
 #modify the code to use long type fields instead of int
 ------------------------------------------------------------------------------------------------------
@@ -290,5 +290,14 @@ sudo yum --enablerepo epel install unetbootin
  -------------------------------------------------------------------------------------------
  sudo netstat -anltp | grep "LISTEN" 
  sudo /sbin/chkconfig cups --level 2345 off
- 
- 
+ sudo /sbin/chkconfig fcoe --level 2345 off
+ sudo /sbin/chkconfig nfslock --level 2345 off
+ sudo /sbin/chkconfig portreserve --level 2345 off
+ sudo /sbin/chkconfig rpcbind --level 2345 off
+ sudo /sbin/chkconfig rpcgssd --level 345 off
+ sudo /sbin/chkconfig rpcidmapd --level 345 off
+ sudo /sbin/chkconfig kdump --level 345 off
+ sudo /sbin/chkconfig postfix --level 345 off
+ ---------------------------------------------------------------
+ #change centos locale
+ -------------------------------------------------------------
