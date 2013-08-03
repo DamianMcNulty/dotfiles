@@ -1,3 +1,16 @@
+------------------------------------------------------------------------------
+Tasks
+
+1. Install a live version of centos on a 4bg usb stick to install centos
+2. Install centos 6.4 on a free 30gb partition to hard drive using the centos live usb
+2. Install a centos installation dvd on a 8gb usb stick for installation of virtual machines
+3. Create a local repo update server stored on a 16gb usb stick for updates
+4. Create patches for modifications to the centos configuration
+5. Create an updated centos dvd for step 2
+6. Install virtualbox
+7. Test kickstart files using virtual machines
+8. Install main hard drive using the 8gb installation dvd usb disk and a kickstart file
+
 -------------------------------------------------------------------------------
 #How to make a Centos6 live usb
 sudo yum --enablerepo epel install unetbootin
@@ -270,7 +283,7 @@ add jar file to 8gb usb stick
 download centos dvd
 #modify the code to use long type fields instead of int
 ------------------------------------------------------------------------------------------------------
-#8gb usb stick for installation of virtual machines
+#Centos dvd on a 8gb usb stick for installation of virtual machines
 
 sudo yum --enablerepo epel install unetbootin
 #use  CentOS-6.4-i386-netinstall.iso 
@@ -279,10 +292,52 @@ sudo yum --enablerepo epel install unetbootin
  -------------------------------------------------------------------------------------------------
  #for the yum local repo
  #combine the two CentOS dvds using the mkdvdiso.sh script
- #copy the /root/mkrhdvd directory to a 16gb usb stick
- #wget the centos updates onto this disk
- #set up the local repo
+ #the script will not finish so copy the /root/mkrhdvd directory to a 16gb usb stick
+ #reposync the centos updates onto this disk with the normal CentOS-Base.repo 
+ reposync -n -r updates -p /media/2025-4F6A_/repo/CentOS/6.4/
+ sudo umount /media/2025-4F6A_
+ sudo mount /dev/sdb1 /media/2025-4F6A/
+ sudo gedit /etc/httpd/conf/httpd.conf
+ change /var/www/html to /media/2025-4f6A/repo in two places
+ set selinux to permissive
+ sudo /sbin/service httpd start
+ the repo should work now
  ----------------------------------------------------------------------------------------------
+ internal.repo
+ 
+ # CentOS base from installation media
+[base]
+name=CentOS-$releasever - Base
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os
+#baseurl=http://mirror.centos.org/centos/$releasever/os/$basearch/
+baseurl=http://127.0.0.1/repo/CentOS/6.4/os/
+enabled=1
+gpgcheck=1
+gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-5
+protect=1
+
+# CentOS updates via rsync mirror
+# rsync://mirror.cogentco.com/CentOS/5/updates/i386
+# rsync://mirror.cogentco.com/CentOS/5/updates/x86_64
+[updates]
+name=CentOS-$releasever - Updates
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates
+#baseurl=http://mirror.centos.org/centos/$releasever/updates/$basearch/
+baseurl=http://127.0.0.1/repo/CentOS/6.4/updates/
+enabled=1
+gpgcheck=1
+gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-5
+protect=1
+
+# localy built and misc collected RPMs
+[local]
+name=CentOS-$releasever - Local
+baseurl=http://127.0.0.1/repo/local/el$releasever/$basearch
+enabled=1
+gpgcheck=0
+protect=0
+ 
+ --------------------------------------------------------------------------------------------
  #remove temp files at shutdown
  sudo vim /etc/rc.d/init.d/rsyslog
  #add to the stop section
