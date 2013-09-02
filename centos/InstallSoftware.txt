@@ -356,3 +356,6 @@ protect=0
  ---------------------------------------------------------------
  #change centos locale
  -------------------------------------------------------------
+ #install mysql workbench
+ sudo yum --enablerepo epel install tinyxml
+ sudo yum install mysql-workbench-community-6.0.6-1.el6.i386.rpm 
