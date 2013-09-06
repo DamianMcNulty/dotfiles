@@ -362,3 +362,18 @@ protect=0
  ------------------------------------------------------------------
  #install phpmyadmin
   sudo yum --enablerepo epel install phpmyadmin
+  ----------------------------------------------------------
+  #Work flow for database design
+  1. Use Mysql workbench to create new tables and their attributes
+  2. Auto generate the uml diagram for the schema
+  3. Add any required referential integrity constraints to this diagram
+  4. Forward engineer the database to a local mysql server
+  5. Save the installation sql script
+  6. Connect to mysql using Open Office base
+  7. Formulate the desired queries or views
+  7. Use Open Office to design forms for data input
+  8. Use Open Office to design reports for output
+  
+  --------------------------------------------------------------
+  For more interesting reports it is possible to connect to a database
+  with latex and produce live tables and graphs.
