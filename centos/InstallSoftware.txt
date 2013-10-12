@@ -393,3 +393,11 @@ protect=0
   If Sweave  doesn't connect to MySQL make sure the user has privileges for the database
   Use phpmyadmin to change the necessary privileges
   ------------------------------------------------------------------------------
+  MySQL
+  
+  #backup
+  mysqldump -u root -p PropertyManagement > PM1.sql
+  
+  #restore
+  mysql -u root -p PM1 < PM1.sql
+  
