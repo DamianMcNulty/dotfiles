@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{hyperref}
+\hypersetup{pdfauthor={Damian McNulty}, pdftitle={RMySQL}, pdfsubject={RMySQL}, pdfkeywords={RMySQL}}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\title{RMySQL}
+\author{Damian McNulty}
+\maketitle
+<<echo=false, results=hide>>=
+library(multcomp)
+library(xtable)
+library(RMySQL)
+@
+\section{Staff}
+\label{sec:Staff}
+<<echo = false, results=tex>>=
+con = dbConnect(MySQL(), group = "Management")
+d <- dbReadTable(con, "vStaff")
+query1 = ('SELECT * FROM vStaff')
+query2 = ('SELECT * FROM vStaff WHERE Position = "Manager"')
+query2b = ('SELECT * FROM vStaff WHERE Position = "Supervisor"')
+query2c = ('SELECT * FROM vStaff WHERE Position = "Assistant"')
+
+staff = dbGetQuery(con, query1)
+manager = dbGetQuery(con, query2)
+supervisor = dbGetQuery(con, query2b)
+assistant = dbGetQuery(con, query2c)
+print(xtable(staff))
+@
+\section{Managers}
+<<echo = false, results=tex>>=
+print(xtable(manager))
+@
+\section{Supervisors}
+<<echo = false, results=tex>>=
+print(xtable(supervisor))
+@
+\section{Assistants}
+<<echo = false, results=tex>>=
+print(xtable(assistant))
+@
+\end{document}
+\end{article}

@@ -376,4 +376,20 @@ protect=0
   
   --------------------------------------------------------------
   For more interesting reports it is possible to connect to a database
-  with latex and produce live tables and graphs.
+  with latex and Sweave to produce up-to-date tables and graphs.
+  ----------------------------------------------------------------
+  #RStudio
+  
+  wget http://download1.rstudio.org/rstudio-0.97.551-i686.rpm
+  sudo cp rstudio-0.97.551-i686.rpm /media/2025-4F6A/repo/local/el6/i386/
+  sudo createrepo -v --update /media/2025-4F6A/repo/local/el6/i386/
+  #start local repo and install rstudio
+  sudo yum install rstudio
+  
+  -----------------------------------------------------------------
+ 
+  RMySQL
+  
+  If Sweave  doesn't connect to MySQL make sure the user has privileges for the database
+  Use phpmyadmin to change the necessary privileges
+  ------------------------------------------------------------------------------
