@@ -399,5 +399,5 @@ protect=0
   mysqldump -u root -p PropertyManagement > PM1.sql
   
   #restore
-  mysql -u root -p PM1 < PM1.sql
+  mysql -u root -p PM1 < PM1.sql 
   
